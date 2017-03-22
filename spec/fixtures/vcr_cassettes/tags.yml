@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://138.68.231.65:5531/tags
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Auth-Token:
+      - e7Eh4CqZfzpkXGSMKUFcAOn9l3dQT2tgvbHVoWLwDrsuPBm10Y
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 22 Mar 2017 19:30:32 GMT
+      Content-Length:
+      - '43'
+    body:
+      encoding: UTF-8
+      string: '["member","component","generation","host"]
+
+'
+    http_version: 
+  recorded_at: Wed, 22 Mar 2017 19:30:32 GMT
+recorded_with: VCR 3.0.3
