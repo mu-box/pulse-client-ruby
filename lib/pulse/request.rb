@@ -1,7 +1,7 @@
 require 'faraday'
 require 'json'
 
-class PulseClient::Request
+class Pulse::Request
 
   attr_reader :host
   attr_reader :token
@@ -27,7 +27,7 @@ class PulseClient::Request
 
     process_response(res)
   rescue Faraday::ClientError => e
-    raise ::PulseClient::ConnectionError, e.message
+    raise ::Pulse::ConnectionError, e.message
   end
 
   def process_response(res)
@@ -36,15 +36,15 @@ class PulseClient::Request
     if res.status >= 200 && res.status < 300
       from_json(res.body)
     elsif res.status >= 300 && res.status < 400
-      raise ::PulseClient::RedirectionError, status_body
+      raise ::Pulse::RedirectionError, status_body
     elsif res.status == 401
-      raise ::PulseClient::UnauthorizedError, status_body
+      raise ::Pulse::UnauthorizedError, status_body
     elsif res.status == 404
-      raise ::PulseClient::NotFoundError, status_body
+      raise ::Pulse::NotFoundError, status_body
     elsif res.status >= 400 && res.status < 500
-      raise ::PulseClient::ClientError, status_body
+      raise ::Pulse::ClientError, status_body
     elsif res.status >= 500
-      raise ::PulseClient::ServerError, status_body
+      raise ::Pulse::ServerError, status_body
     else
       # This should be an edge-case. All known statuses should be handled.
       fail status_body

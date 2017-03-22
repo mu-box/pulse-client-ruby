@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pulse_client'
+require 'pulse'
 
 Gem::Specification.new do |spec|
   spec.name    = "pulse"
-  spec.version = PulseClient::VERSION
+  spec.version = Pulse::VERSION
   spec.authors = ["Jed Galbraith"]
   spec.email   = ["jed@nanobox.io"]
 

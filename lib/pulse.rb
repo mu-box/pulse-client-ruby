@@ -1,4 +1,4 @@
-class PulseClient
+class Pulse
   VERSION = "0.0.0"
 
   # General Error that more specific errors inherit from.
@@ -31,6 +31,6 @@ class PulseClient
   end
 end
 
-require "pulse_client/stats"
-require "pulse_client/alerts"
-require "pulse_client/request"
+require "pulse/stats"
+require "pulse/alerts"
+require "pulse/request"

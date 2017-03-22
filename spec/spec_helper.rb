@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'pulse_client'
+require 'pulse'
 require 'vcr'
 require 'pry'
 
@@ -13,6 +13,6 @@ module Helpers
   TOKEN = 'e7Eh4CqZfzpkXGSMKUFcAOn9l3dQT2tgvbHVoWLwDrsuPBm10Y'.freeze
 
   def pulse
-    @pulse ||= PulseClient.new(HOST, TOKEN)
+    @pulse ||= Pulse.new(HOST, TOKEN)
   end
 end

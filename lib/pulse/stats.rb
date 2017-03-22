@@ -1,4 +1,4 @@
-class PulseClient::Stats
+class Pulse::Stats
 
   attr_reader :request
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PulseClient::Alerts do
+describe Pulse::Alerts do
   include Helpers
 
   let(:attrs) do
