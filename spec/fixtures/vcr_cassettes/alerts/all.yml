@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://138.197.205.144:5531/alerts
+    body:
+      encoding: UTF-8
+      string: '{"tags":{"host":"abc"},"metric":"cpu_used","level":"crit","threshold":"80","duration":"30s","post":"http://127.0.0.1/alert"}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Auth-Token:
+      - Hf8VOsdW9QAXP4pxR6UnuvBGalhiFewjyZDCtbq5TN1JI37YkE
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - X-AUTH-TOKEN, X-CSRF-Token
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 17 Apr 2017 18:27:45 GMT
+      Content-Length:
+      - '183'
+    body:
+      encoding: UTF-8
+      string: '{"id":"8dd3fd97-2553-4415-9567-06ffd949c678","tags":{"host":"abc"},"metric":"cpu_used","level":"crit","operator":"","threshold":"80","duration":"30s","post":"http://127.0.0.1/alert"}
+
+'
+    http_version: 
+  recorded_at: Mon, 17 Apr 2017 18:27:45 GMT
+- request:
+    method: get
+    uri: https://138.197.205.144:5531/alerts
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Auth-Token:
+      - Hf8VOsdW9QAXP4pxR6UnuvBGalhiFewjyZDCtbq5TN1JI37YkE
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - X-AUTH-TOKEN, X-CSRF-Token
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 17 Apr 2017 18:27:46 GMT
+      Content-Length:
+      - '1677'
+    body:
+      encoding: UTF-8
+      string: '[{"link":{"rel":"self","href":"/kapacitor/v1/tasks/8dd3fd97-2553-4415-9567-06ffd949c678"},"id":"8dd3fd97-2553-4415-9567-06ffd949c678","template-id":"","type":"batch","dbrps":[{"db":"statistics","rp":"one_day"}],"script":"batch\n    |query(''''''\n\t\tSELECT
+        mean(cpu_used) AS mean_cpu_used\n\t\tFROM \"statistics\".\"one_day\".\"cpu_used\"\n\t\tWHERE
+        \"host\" = ''abc''\n\t'''''')\n        .period(30s)\n        .every(30s)\n    |alert()\n        .id(''[abc]
+        cpu_used'')\n        .message(''{{ .ID }} is {{ .Level }} value:{{ index .Fields
+        \"mean_cpu_used\" }}'')\n        .crit(lambda: \"mean_cpu_used\" \u003e 80)\n        .post(''http://127.0.0.1/alert'')\n        .stateChangesOnly()\n        .log(''/tmp/alerts.log'')\n","vars":null,"dot":"digraph
+        8dd3fd97-2553-4415-9567-06ffd949c678 {\ngraph [throughput=\"0.00 batches/s\"];\n\nquery1
+        [avg_exec_time_ns=\"0s\" batches_queried=\"0\" points_queried=\"0\" query_errors=\"0\"
+        ];\nquery1 -\u003e alert2 [processed=\"0\"];\n\nalert2 [alerts_triggered=\"0\"
+        avg_exec_time_ns=\"0s\" crits_triggered=\"0\" infos_triggered=\"0\" oks_triggered=\"0\"
+        warns_triggered=\"0\" ];\n}","status":"enabled","executing":true,"error":"","stats":{"task-stats":{"throughput":0},"node-stats":{"alert2":{"alerts_triggered":0,"avg_exec_time_ns":0,"collected":0,"crits_triggered":0,"emitted":0,"infos_triggered":0,"oks_triggered":0,"warns_triggered":0},"batch0":{"avg_exec_time_ns":0,"collected":0,"emitted":0},"query1":{"avg_exec_time_ns":0,"batches_queried":0,"collected":0,"emitted":0,"points_queried":0,"query_errors":0}}},"created":"2017-04-17T18:27:45.697806001Z","modified":"2017-04-17T18:27:45.697806001Z","last-enabled":"2017-04-17T18:27:45.697806001Z"}]
+
+'
+    http_version: 
+  recorded_at: Mon, 17 Apr 2017 18:27:46 GMT
+recorded_with: VCR 3.0.3

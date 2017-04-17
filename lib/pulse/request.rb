@@ -36,15 +36,15 @@ class Pulse::Request
     if res.status >= 200 && res.status < 300
       from_json(res.body)
     elsif res.status >= 300 && res.status < 400
-      raise ::Pulse::RedirectionError, status_body
+      raise ::Pulse::RedirectionError.new(status_body, status_code: res.status)
     elsif res.status == 401
-      raise ::Pulse::UnauthorizedError, status_body
+      raise ::Pulse::UnauthorizedError.new(status_body, status_code: res.status)
     elsif res.status == 404
-      raise ::Pulse::NotFoundError, status_body
+      raise ::Pulse::NotFoundError.new(status_body, status_code: res.status)
     elsif res.status >= 400 && res.status < 500
-      raise ::Pulse::ClientError, status_body
+      raise ::Pulse::ClientError.new(status_body, status_code: res.status)
     elsif res.status >= 500
-      raise ::Pulse::ServerError, status_body
+      raise ::Pulse::ServerError.new(status_body, status_code: res.status)
     else
       # This should be an edge-case. All known statuses should be handled.
       fail status_body

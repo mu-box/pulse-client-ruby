@@ -15,6 +15,14 @@ class Pulse::Alerts
     @request = request
   end
 
+  def all
+    request.get '/alerts'
+  end
+
+  def find(id)
+    request.get "/alerts/#{id}"
+  end
+
   # e.g. result
   # {
   #   "id"=>"51c054e9-93cb-45ed-bd83-8ed838cbd4d4",
@@ -33,6 +41,7 @@ class Pulse::Alerts
     request.put '/alerts', attrs
   end
 
+  # e.g. result
   # {"msg"=>"Success"}
   def delete(id)
     request.delete "/alerts/#{id}"

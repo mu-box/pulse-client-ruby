@@ -1,8 +1,13 @@
-class Pulse
-  VERSION = "0.0.0"
+module Pulse
+  # Base error that more specific errors inherit from.
+  class Error < StandardError
+    attr_reader :status_code
 
-  # General Error that more specific errors inherit from.
-  class Error             < StandardError; end
+    def initialize(message, opts = {})
+      @message     = message
+      @status_code = opts[:status_code]
+    end
+  end
   # Error connecting to host
   class ConnectionError   < Error; end
   # http 3xx Redirection
@@ -15,22 +20,10 @@ class Pulse
   class ClientError       < Error; end
   # http 5xx Server Error
   class ServerError       < Error; end
-
-  attr_reader :request
-
-  def initialize(host = '127.0.0.1', token = '123')
-    @request = Request.new(host, token)
-  end
-
-  def stats
-    Stats.new(request)
-  end
-
-  def alerts
-    Alerts.new(request)
-  end
 end
 
-require "pulse/stats"
 require "pulse/alerts"
+require "pulse/client"
 require "pulse/request"
+require "pulse/stats"
+require "pulse/version"

@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://138.197.205.144:5531/alerts
+    body:
+      encoding: UTF-8
+      string: '{"tags":{"host":"abc"},"metric":"cpu_used","level":"crit","threshold":"80","duration":"30s","post":"http://127.0.0.1/alert"}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Auth-Token:
+      - Hf8VOsdW9QAXP4pxR6UnuvBGalhiFewjyZDCtbq5TN1JI37YkE
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - X-AUTH-TOKEN, X-CSRF-Token
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 17 Apr 2017 18:27:47 GMT
+      Content-Length:
+      - '183'
+    body:
+      encoding: UTF-8
+      string: '{"id":"c86bfd34-16f8-47c9-b6fe-0468b706052c","tags":{"host":"abc"},"metric":"cpu_used","level":"crit","operator":"","threshold":"80","duration":"30s","post":"http://127.0.0.1/alert"}
+
+'
+    http_version: 
+  recorded_at: Mon, 17 Apr 2017 18:27:47 GMT
+recorded_with: VCR 3.0.3
