@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://138.197.205.144:5531/latest/disk_percent
+    uri: https://138.197.205.144:5531/latest/disk_percent?host=do.1
     body:
       encoding: UTF-8
       string: "{}"
@@ -31,14 +31,14 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 17 Apr 2017 17:36:57 GMT
+      - Mon, 17 Apr 2017 20:07:35 GMT
       Content-Length:
       - '38'
     body:
       encoding: UTF-8
-      string: '{"time":1492450500000,"value":9.0709}
+      string: '{"time":1492459560000,"value":9.0762}
 
 '
     http_version: 
-  recorded_at: Mon, 17 Apr 2017 17:36:57 GMT
+  recorded_at: Mon, 17 Apr 2017 20:07:35 GMT
 recorded_with: VCR 3.0.3

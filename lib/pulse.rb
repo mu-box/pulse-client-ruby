@@ -1,13 +1,6 @@
 module Pulse
   # Base error that more specific errors inherit from.
-  class Error < StandardError
-    attr_reader :status_code
-
-    def initialize(message, opts = {})
-      @message     = message
-      @status_code = opts[:status_code]
-    end
-  end
+  class Error             < StandardError; end
   # Error connecting to host
   class ConnectionError   < Error; end
   # http 3xx Redirection

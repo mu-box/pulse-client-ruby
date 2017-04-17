@@ -32,7 +32,7 @@ describe Pulse::Stats do
   describe '#latest' do
     it 'returns array' do
       VCR.use_cassette('stats/latest') do
-        result = pulse.stats.latest('disk_percent')
+        result = pulse.stats.latest('disk_percent', host: 'do.1')
         expect(result).to be_a Hash
         expect(result.keys).to eq %w(time value)
       end
