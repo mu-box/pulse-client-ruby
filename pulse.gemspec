@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email   = ["jed@nanobox.io"]
 
   spec.summary  = %q{Ruby client for interacting with the pulse service}
-  spec.homepage = "https://github.com/nanobox-io/nanoagent-client-ruby"
+  spec.homepage = "https://github.com/mu-box/microagent-client-ruby"
   spec.license  = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

@@ -1,6 +1,6 @@
 # Ruby Pulse Client
 
-A Ruby client for interacting with the [pulse](https://github.com/nanopack/pulse) service.
+A Ruby client for interacting with the [pulse](https://github.com/mu-box/pulse) service.
 
 ## Installation
 
@@ -34,4 +34,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## License
 
-This codebase is proprietary and should not be used without express written consent from Pagoda Box Inc.
+This project is released under [The MIT License](http://opensource.org/licenses/MIT).
